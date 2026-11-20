@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Railway Knowledge-Based Decision Support System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-icon">🚆</span><div><strong>RailWise</strong><small>Knowledge-Based Decision Support</small></div></div>
+    <span class="system-status"><i></i> Decision engine online</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">SMART RAILWAY OPERATIONS</p>
+        <h1>Operational Decision<br><em>Support System</em></h1>
+        <p class="hero-copy">Analyze train delays, weather, track maintenance and passenger demand to generate clear operational recommendations.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true"><div class="sun"></div><div class="track"></div><div class="train">🚆</div></div>
+    </section>
+
+    <section class="stats">
+      <article class="stat-card"><span class="stat-label">SCENARIO</span><strong id="scenarioStatus">Ready</strong><small>Input-based analysis</small></article>
+      <article class="stat-card"><span class="stat-label">RISK LEVEL</span><strong id="riskStat">—</strong><small>Calculated by rule engine</small></article>
+      <article class="stat-card"><span class="stat-label">RECOMMENDATIONS</span><strong id="recommendationCount">0</strong><small>Actions suggested</small></article>
+    </section>
+
+    <div class="section-heading"><div><p class="eyebrow">INPUT DATA</p><h2>Current railway conditions</h2></div><button class="btn btn-light" id="resetBtn" type="button">↺ Reset values</button></div>
+    <section class="workspace">
+      <form id="conditionsForm" class="input-panel">
+        <div class="field-group">
+          <div class="field-title"><span class="field-icon">⏱</span><div><h3>Train delay</h3><p>Current delay of the affected train</p></div></div>
+          <label for="delay">Delay duration</label>
+          <div class="input-with-unit"><input id="delay" type="number" min="0" max="300" value="15"><span>minutes</span></div>
+        </div>
+        <div class="field-group">
+          <div class="field-title"><span class="field-icon">🌦</span><div><h3>Weather condition</h3><p>Weather along the route</p></div></div>
+          <label for="weather">Select weather</label>
+          <select id="weather"><option value="clear">Clear</option><option value="rain">Heavy rain</option><option value="storm">Storm / cyclone warning</option><option value="fog">Dense fog</option></select>
+        </div>
+        <div class="field-group">
+          <div class="field-title"><span class="field-icon">🛠</span><div><h3>Track maintenance</h3><p>Availability of the planned track</p></div></div>
+          <label for="maintenance">Track status</label>
+          <select id="maintenance"><option value="none">No maintenance</option><option value="planned">Planned maintenance</option><option value="urgent">Urgent repair required</option></select>
+        </div>
+        <div class="field-group">
+          <div class="field-title"><span class="field-icon">👥</span><div><h3>Passenger demand</h3><p>Expected passenger volume</p></div></div>
+          <label for="demand">Demand level</label>
+          <select id="demand"><option value="low">Low</option><option value="normal" selected>Normal</option><option value="high">High</option></select>
+        </div>
+        <button class="btn btn-primary analyze-btn" type="submit">Analyze conditions <span>→</span></button>
+        <p class="form-note">Demo mode: enter sample conditions to run the knowledge rules.</p>
+      </form>
+
+      <section class="result-panel" aria-live="polite">
+        <div class="result-top"><div><p class="eyebrow">KNOWLEDGE ENGINE OUTPUT</p><h2>Decision report</h2></div><span class="report-tag">RULE-BASED</span></div>
+        <div id="emptyState" class="empty-state"><div>🧠</div><h3>Ready to analyze</h3><p>Enter railway conditions and select <b>Analyze conditions</b> to see the recommended operational actions.</p></div>
+        <div id="report" class="report hidden">
+          <div class="risk-banner" id="riskBanner"><div><small>ASSESSED OPERATIONAL RISK</small><strong id="riskText">Moderate</strong></div><span id="riskEmoji">⚠️</span></div>
+          <h3 class="subheading">Recommended actions</h3>
+          <ul id="recommendations" class="recommendations"></ul>
+          <h3 class="subheading">Why these decisions?</h3>
+          <div id="reasoning" class="reasoning"></div>
+          <div class="disclaimer">These are simulated decision-support suggestions. Actual railway actions must be approved by authorized operations and safety personnel.</div>
+        </div>
+      </section>
+    </section>
+
+    <section class="logic-section">
+      <p class="eyebrow">HOW IT WORKS</p><h2>Knowledge-based decision process</h2>
+      <div class="logic-grid">
+        <article><span>01</span><h3>Input collection</h3><p>Collect delay, weather, maintenance and passenger-demand information.</p></article>
+        <article><span>02</span><h3>Knowledge base</h3><p>Store operational rules such as severe weather requiring caution and urgent repairs requiring track restriction.</p></article>
+        <article><span>03</span><h3>Inference engine</h3><p>Compare the entered conditions with rules and identify applicable actions.</p></article>
+        <article><span>04</span><h3>Decision output</h3><p>Display a risk assessment, recommendations and explanations for the operator.</p></article>
+      </div>
+    </section>
+    <footer>RailWise · Academic demonstration project · Not connected to live railway systems</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
